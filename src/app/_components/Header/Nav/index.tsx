@@ -20,9 +20,14 @@ export const HeaderNav: React.FC<{ header: HeaderType }> = ({ header }) => {
       {navItems.map(({ link }, i) => {
         return <CMSLink key={i} {...link} appearance="none" />
       })}
-      <CartLink />
-      {user && <Link href="/account">Account</Link>}
-      {!user && (
+      
+      {/* Render CartLink only once */}
+      {user && <CartLink />}
+      
+      {/* Conditional rendering for Account or Login */}
+      {user ? (
+        <Link href="/account">Account</Link>
+      ) : (
         <Button
           el="link"
           href="/login"
@@ -31,7 +36,6 @@ export const HeaderNav: React.FC<{ header: HeaderType }> = ({ header }) => {
           onClick={() => (window.location.href = '/login')}
         />
       )}
-      {user && <CartLink />}
     </nav>
   )
 }
