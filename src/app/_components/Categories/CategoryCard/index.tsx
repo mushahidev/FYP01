@@ -2,8 +2,8 @@
 import React from 'react'
 import Link from 'next/link'
 
-//import { Category } from '../../../../payload/payload-types'
-import { Category, Media } from '../../../../payload/payload-types' // Imported Media from payload-types
+import { Category } from '../../../../payload/payload-types'
+import { Media } from '../../../../payload/payload-types' // Imported Media from payload-types
 import { useFilter } from '../../../_providers/Filter'
 
 import classes from './index.module.scss'
@@ -19,6 +19,7 @@ const CategoryCard = ({ category }: CategoryCardProps) => {
   return (
     <Link
       href="/products"
+      className={classes.card}
       // Add a null check for media and provide a fallback background image
       style={{ backgroundImage: media?.url ? `url(${media.url})` : 'url(/path-to-fallback-image.jpg)' }}
       //style={{ backgroundImage: `url(${media.url})` }}
